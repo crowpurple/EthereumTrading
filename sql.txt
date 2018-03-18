@@ -1,0 +1,87 @@
+CREATE TABLE IF NOT EXISTS `buyer_table`(
+   `userID` INT,
+   `nickName` VARCHAR(30),
+   `realName` VARCHAR(30),
+   `password` VARCHAR(20),
+   `gender` INT,
+   `picAddress` VARCHAR(100),
+   `phoneNum` VARCHAR(20),
+   `email` VARCHAR(50),
+   `address` VARCHAR(300),
+   `regTime` DATETIME,
+   `statue` INT,
+   `userWallet` VARCHAR(50),
+   `favorite` VARCHAR(2000),
+   PRIMARY KEY ( `userID` )
+);
+
+CREATE TABLE IF NOT EXISTS `seller_table`(
+   `sellerID` INT,
+   `store` VARCHAR(50),
+   `sellerName` VARCHAR(30),
+   `email` VARCHAR(50),
+   `password` VARCHAR(20),
+   `phone` VARCHAR(20),
+   `address` VARCHAR(300),
+   `storeIntro` VARCHAR(1000),
+   `tradeTime` INT,
+   `tradeScore` INT,
+   `regTime` DATETIME,
+   `statue` INT,
+   `sellerWallet` VARCHAR(50),	
+   `picAddress` VARCHAR(100),
+   PRIMARY KEY ( `sellerID` )
+);
+
+CREATE TABLE IF NOT EXISTS `manage_table`(
+   `manageID` INT,
+   `manageName` VARCHAR(30),
+   `email` VARCHAR(50),
+   `phone` VARCHAR(20),
+   `regTime` DATETIME,
+   `picAddress` VARCHAR(100),
+   `password` VARCHAR(20),
+   `address` VARCHAR(300),
+   PRIMARY KEY ( `manageID` )
+);
+
+CREATE TABLE IF NOT EXISTS `good1_table`(
+   `goodsID` INT,
+   `name` VARCHAR(50),
+   `picAddress` VARCHAR(100),
+   `goodsIntro` VARCHAR(1000),
+   `sellerID` INT,
+   `saleTime` DATETIME,
+   `sellTimes` INT,
+   `favorTimes` INT,
+   `price` INT,
+   `address` VARCHAR(100),
+   `goodsScore` INT,
+   PRIMARY KEY ( `goodsID` )
+);
+
+CREATE TABLE IF NOT EXISTS `good2_table`(
+   `goodsID` INT,
+   `name` VARCHAR(50),
+   `picAddress` VARCHAR(100),
+   `goodsIntro` VARCHAR(1000),
+   `sellerID` INT,
+   `saleTime` DATETIME,
+   `sellTimes` INT,
+   `favorTimes` INT,
+   `price` INT,
+   `goodsScore` INT,
+   `transportPrice` INT,
+   `transportTime` INT,
+   PRIMARY KEY ( `goodsID` )
+);
+
+INSERT INTO buyer_table ( userID, nickName,realName, password,gender,phoneNum,email,statue )
+                       VALUES
+                       ( 1,"junfeng","Junfeng Li","qwer",0,"18896721953","sa615282@mail.ustc.edu.cn",1 );
+INSERT INTO seller_table ( sellerID, store,sellerName, email,password,phone,tradeTime,tradeScore )
+                       VALUES
+                       ( 1,"ustc","Junfeng Li","sa615282@mail.ustc.edu.cn","qwer","18896721953",1,1 );
+INSERT INTO good2_table ( goodsID, name,sellerID, sellTimes,price,goodsScore,transportPrice,transportTime )
+                       VALUES
+                       ( 1,"coffee",1,1,10,10,1,1 );

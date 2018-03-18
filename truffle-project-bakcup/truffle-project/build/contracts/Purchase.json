@@ -1,0 +1,1660 @@
+{
+  "contractName": "Purchase",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getSomething",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "seller",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "value",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "refund",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "buyer",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "confirmReceived",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "state",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "confirmPurchase",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "fa",
+          "type": "uint256"
+        }
+      ],
+      "name": "purchase",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6060604052341561000f57600080fd5b6106188061001e6000396000f300606060405260043610610099576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806301ec3b6c1461009e57806308551a53146100f35780633fa4f24514610148578063590e1ae3146101715780637150d8ae1461018657806373fac6f0146101db578063c19d93fb146101f0578063d696069714610227578063efef39a114610231575b600080fd5b34156100a957600080fd5b6100b1610249565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100fe57600080fd5b610106610273565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561015357600080fd5b61015b610299565b6040518082815260200191505060405180910390f35b341561017c57600080fd5b61018461029f565b005b341561019157600080fd5b61019961039b565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156101e657600080fd5b6101ee6103c1565b005b34156101fb57600080fd5b61020361045f565b6040518082600281111561021357fe5b60ff16815260200191505060405180910390f35b61022f610472565b005b610247600480803590602001909190505061057d565b005b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60005481565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415610399576000600281111561030257fe5b600260149054906101000a900460ff16600281111561031d57fe5b5050600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc3073ffffffffffffffffffffffffffffffffffffffff16319081150290604051600060405180830381858888f19350505050151561039857600080fd5b5b565b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60028060146101000a81548160ff021916908360028111156103df57fe5b0217905550600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc3073ffffffffffffffffffffffffffffffffffffffff16319081150290604051600060405180830381858888f19350505050151561045d57600080fd5b565b600260149054906101000a900460ff1681565b600260149054906101000a900460ff16600281111561048d57fe5b6001600281111561049a57fe5b1480156104cb5750600260149054906101000a900460ff1660028111156104bd57fe5b6002808111156104c957fe5b145b15610515573373ffffffffffffffffffffffffffffffffffffffff166108fc349081150290604051600060405180830381858888f19350505050151561051057600080fd5b61057b565b33600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506001600260146101000a81548160ff0219169083600281111561057557fe5b02179055505b565b8060008190555033600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000600260146101000a81548160ff021916908360028111156105e457fe5b0217905550505600a165627a7a72305820029fd147192c99ccd46d8328753a08537c093976d8457e447046640c1d5ba29e0029",
+  "deployedBytecode": "0x606060405260043610610099576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806301ec3b6c1461009e57806308551a53146100f35780633fa4f24514610148578063590e1ae3146101715780637150d8ae1461018657806373fac6f0146101db578063c19d93fb146101f0578063d696069714610227578063efef39a114610231575b600080fd5b34156100a957600080fd5b6100b1610249565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100fe57600080fd5b610106610273565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561015357600080fd5b61015b610299565b6040518082815260200191505060405180910390f35b341561017c57600080fd5b61018461029f565b005b341561019157600080fd5b61019961039b565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156101e657600080fd5b6101ee6103c1565b005b34156101fb57600080fd5b61020361045f565b6040518082600281111561021357fe5b60ff16815260200191505060405180910390f35b61022f610472565b005b610247600480803590602001909190505061057d565b005b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60005481565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415610399576000600281111561030257fe5b600260149054906101000a900460ff16600281111561031d57fe5b5050600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc3073ffffffffffffffffffffffffffffffffffffffff16319081150290604051600060405180830381858888f19350505050151561039857600080fd5b5b565b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60028060146101000a81548160ff021916908360028111156103df57fe5b0217905550600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc3073ffffffffffffffffffffffffffffffffffffffff16319081150290604051600060405180830381858888f19350505050151561045d57600080fd5b565b600260149054906101000a900460ff1681565b600260149054906101000a900460ff16600281111561048d57fe5b6001600281111561049a57fe5b1480156104cb5750600260149054906101000a900460ff1660028111156104bd57fe5b6002808111156104c957fe5b145b15610515573373ffffffffffffffffffffffffffffffffffffffff166108fc349081150290604051600060405180830381858888f19350505050151561051057600080fd5b61057b565b33600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506001600260146101000a81548160ff0219169083600281111561057557fe5b02179055505b565b8060008190555033600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000600260146101000a81548160ff021916908360028111156105e457fe5b0217905550505600a165627a7a72305820029fd147192c99ccd46d8328753a08537c093976d8457e447046640c1d5ba29e0029",
+  "sourceMap": "25:822:0:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "25:822:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;300:78;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;72:21;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;49:17;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;720:125;;;;;;;;;;;;;;99:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;605:109;;;;;;;;;;;;;;170:18;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;384:210;;;;;;195:99;;;;;;;;;;;;;;;;;;300:78;342:7;365:6;;;;;;;;;;;358:13;;300:78;:::o;72:21::-;;;;;;;;;;;;;:::o;49:17::-;;;;:::o;720:125::-;769:6;;;;;;;;;;;755:20;;:10;:20;;;752:86;;;789:13;782:20;;;;;;;;:5;;;;;;;;;;;:20;;;;;;;;;;806:5;;;;;;;;;;;:14;;:28;821:4;:12;;;806:28;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;752:86;720:125::o;99:20::-;;;;;;;;;;;;;:::o;605:109::-;654:14;646:5;;:22;;;;;;;;;;;;;;;;;;;;;;;;678:6;;;;;;;;;;;:15;;:29;694:4;:12;;;678:29;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;605:109::o;170:18::-;;;;;;;;;;;;;:::o;384:210::-;452:5;;;;;;;;;;;436:21;;;;;;;;:12;:21;;;;;;;;;:48;;;;;479:5;;;;;;;;;;;461:23;;;;;;;;:14;:23;;;;;;;;;436:48;433:155;;;491:10;:19;;:30;511:9;491:30;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;433:155;;;543:10;535:5;;:18;;;;;;;;;;;;;;;;;;572:12;564:5;;:20;;;;;;;;;;;;;;;;;;;;;;;;433:155;384:210::o;195:99::-;243:2;237:5;:8;;;;255:10;248:6;;:17;;;;;;;;;;;;;;;;;;274:13;268:5;;:19;;;;;;;;;;;;;;;;;;;;;;;;195:99;:::o",
+  "source": "pragma solidity ^0.4.0;\n\ncontract Purchase {\n    uint public value;\n    address public seller;\n    address public buyer;\n    enum State { Created, Locked, Inactive }\n    State public state;\n\n    function purchase(uint fa) payable\n    {\n\tvalue=fa;\n\tseller=msg.sender;\n\tstate=State.Created;\n    }\n\n    function getSomething() constant returns (address)\n    {\n\treturn seller;\n    }\n\n    function confirmPurchase() payable public\n    {\n\tif(State.Locked == state && State.Inactive == state)\n\t{\n\t\tmsg.sender.transfer(msg.value);\n\t}\n\telse{\n\t\tbuyer = msg.sender;\n\t        state = State.Locked;\n\t}\n    } \n    \n    function confirmReceived() public\n    {\n\tstate = State.Inactive;\n        seller.transfer(this.balance);\n    }\n\n    function refund() public\n    {\n\tif(msg.sender == seller)\n\t{\n\t\tstate==State.Created;\n\t\tbuyer.transfer(this.balance);\n\t}\t\n    }\n}\n",
+  "sourcePath": "/home/crow/Documents/truffle-project/contracts/Purchase.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/home/crow/Documents/truffle-project/contracts/Purchase.sol",
+      "exportedSymbols": {
+        "Purchase": [
+          115
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".0"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            115
+          ],
+          "name": "Purchase",
+          "scope": 116
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "value",
+              "scope": 115,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint",
+                  "type": "uint256"
+                },
+                "id": 2,
+                "name": "ElementaryTypeName",
+                "src": "49:4:0"
+              }
+            ],
+            "id": 3,
+            "name": "VariableDeclaration",
+            "src": "49:17:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "seller",
+              "scope": 115,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "address",
+                  "type": "address"
+                },
+                "id": 4,
+                "name": "ElementaryTypeName",
+                "src": "72:7:0"
+              }
+            ],
+            "id": 5,
+            "name": "VariableDeclaration",
+            "src": "72:21:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "buyer",
+              "scope": 115,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "address",
+                  "type": "address"
+                },
+                "id": 6,
+                "name": "ElementaryTypeName",
+                "src": "99:7:0"
+              }
+            ],
+            "id": 7,
+            "name": "VariableDeclaration",
+            "src": "99:20:0"
+          },
+          {
+            "attributes": {
+              "canonicalName": "Purchase.State",
+              "name": "State"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "Created"
+                },
+                "id": 8,
+                "name": "EnumValue",
+                "src": "138:7:0"
+              },
+              {
+                "attributes": {
+                  "name": "Locked"
+                },
+                "id": 9,
+                "name": "EnumValue",
+                "src": "147:6:0"
+              },
+              {
+                "attributes": {
+                  "name": "Inactive"
+                },
+                "id": 10,
+                "name": "EnumValue",
+                "src": "155:8:0"
+              }
+            ],
+            "id": 11,
+            "name": "EnumDefinition",
+            "src": "125:40:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "state",
+              "scope": 115,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "enum Purchase.State",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "State",
+                  "referencedDeclaration": 11,
+                  "type": "enum Purchase.State"
+                },
+                "id": 12,
+                "name": "UserDefinedTypeName",
+                "src": "170:5:0"
+              }
+            ],
+            "id": 13,
+            "name": "VariableDeclaration",
+            "src": "170:18:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "purchase",
+              "payable": true,
+              "scope": 115,
+              "stateMutability": "payable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "fa",
+                      "scope": 33,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 14,
+                        "name": "ElementaryTypeName",
+                        "src": "213:4:0"
+                      }
+                    ],
+                    "id": 15,
+                    "name": "VariableDeclaration",
+                    "src": "213:7:0"
+                  }
+                ],
+                "id": 16,
+                "name": "ParameterList",
+                "src": "212:9:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 17,
+                "name": "ParameterList",
+                "src": "234:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3,
+                              "type": "uint256",
+                              "value": "value"
+                            },
+                            "id": 18,
+                            "name": "Identifier",
+                            "src": "237:5:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 15,
+                              "type": "uint256",
+                              "value": "fa"
+                            },
+                            "id": 19,
+                            "name": "Identifier",
+                            "src": "243:2:0"
+                          }
+                        ],
+                        "id": 20,
+                        "name": "Assignment",
+                        "src": "237:8:0"
+                      }
+                    ],
+                    "id": 21,
+                    "name": "ExpressionStatement",
+                    "src": "237:8:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 5,
+                              "type": "address",
+                              "value": "seller"
+                            },
+                            "id": 22,
+                            "name": "Identifier",
+                            "src": "248:6:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 127,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 23,
+                                "name": "Identifier",
+                                "src": "255:3:0"
+                              }
+                            ],
+                            "id": 24,
+                            "name": "MemberAccess",
+                            "src": "255:10:0"
+                          }
+                        ],
+                        "id": 25,
+                        "name": "Assignment",
+                        "src": "248:17:0"
+                      }
+                    ],
+                    "id": 26,
+                    "name": "ExpressionStatement",
+                    "src": "248:17:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "enum Purchase.State"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 13,
+                              "type": "enum Purchase.State",
+                              "value": "state"
+                            },
+                            "id": 27,
+                            "name": "Identifier",
+                            "src": "268:5:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "member_name": "Created",
+                              "referencedDeclaration": null,
+                              "type": "enum Purchase.State"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 11,
+                                  "type": "type(enum Purchase.State)",
+                                  "value": "State"
+                                },
+                                "id": 28,
+                                "name": "Identifier",
+                                "src": "274:5:0"
+                              }
+                            ],
+                            "id": 29,
+                            "name": "MemberAccess",
+                            "src": "274:13:0"
+                          }
+                        ],
+                        "id": 30,
+                        "name": "Assignment",
+                        "src": "268:19:0"
+                      }
+                    ],
+                    "id": 31,
+                    "name": "ExpressionStatement",
+                    "src": "268:19:0"
+                  }
+                ],
+                "id": 32,
+                "name": "Block",
+                "src": "234:60:0"
+              }
+            ],
+            "id": 33,
+            "name": "FunctionDefinition",
+            "src": "195:99:0"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "getSomething",
+              "payable": false,
+              "scope": 115,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 34,
+                "name": "ParameterList",
+                "src": "321:2:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 41,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 35,
+                        "name": "ElementaryTypeName",
+                        "src": "342:7:0"
+                      }
+                    ],
+                    "id": 36,
+                    "name": "VariableDeclaration",
+                    "src": "342:7:0"
+                  }
+                ],
+                "id": 37,
+                "name": "ParameterList",
+                "src": "341:9:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 37
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 5,
+                          "type": "address",
+                          "value": "seller"
+                        },
+                        "id": 38,
+                        "name": "Identifier",
+                        "src": "365:6:0"
+                      }
+                    ],
+                    "id": 39,
+                    "name": "Return",
+                    "src": "358:13:0"
+                  }
+                ],
+                "id": 40,
+                "name": "Block",
+                "src": "355:23:0"
+              }
+            ],
+            "id": 41,
+            "name": "FunctionDefinition",
+            "src": "300:78:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "confirmPurchase",
+              "payable": true,
+              "scope": 115,
+              "stateMutability": "payable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 42,
+                "name": "ParameterList",
+                "src": "408:2:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 43,
+                "name": "ParameterList",
+                "src": "430:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "&&",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_enum$_State_$11",
+                                "typeString": "enum Purchase.State"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "member_name": "Locked",
+                                  "referencedDeclaration": null,
+                                  "type": "enum Purchase.State"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 11,
+                                      "type": "type(enum Purchase.State)",
+                                      "value": "State"
+                                    },
+                                    "id": 44,
+                                    "name": "Identifier",
+                                    "src": "436:5:0"
+                                  }
+                                ],
+                                "id": 45,
+                                "name": "MemberAccess",
+                                "src": "436:12:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 13,
+                                  "type": "enum Purchase.State",
+                                  "value": "state"
+                                },
+                                "id": 46,
+                                "name": "Identifier",
+                                "src": "452:5:0"
+                              }
+                            ],
+                            "id": 47,
+                            "name": "BinaryOperation",
+                            "src": "436:21:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_enum$_State_$11",
+                                "typeString": "enum Purchase.State"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "member_name": "Inactive",
+                                  "referencedDeclaration": null,
+                                  "type": "enum Purchase.State"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 11,
+                                      "type": "type(enum Purchase.State)",
+                                      "value": "State"
+                                    },
+                                    "id": 48,
+                                    "name": "Identifier",
+                                    "src": "461:5:0"
+                                  }
+                                ],
+                                "id": 49,
+                                "name": "MemberAccess",
+                                "src": "461:14:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 13,
+                                  "type": "enum Purchase.State",
+                                  "value": "state"
+                                },
+                                "id": 50,
+                                "name": "Identifier",
+                                "src": "479:5:0"
+                              }
+                            ],
+                            "id": 51,
+                            "name": "BinaryOperation",
+                            "src": "461:23:0"
+                          }
+                        ],
+                        "id": 52,
+                        "name": "BinaryOperation",
+                        "src": "436:48:0"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "tuple()",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_uint256",
+                                          "typeString": "uint256"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "transfer",
+                                      "referencedDeclaration": null,
+                                      "type": "function (uint256)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "sender",
+                                          "referencedDeclaration": null,
+                                          "type": "address"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 127,
+                                              "type": "msg",
+                                              "value": "msg"
+                                            },
+                                            "id": 53,
+                                            "name": "Identifier",
+                                            "src": "491:3:0"
+                                          }
+                                        ],
+                                        "id": 56,
+                                        "name": "MemberAccess",
+                                        "src": "491:10:0"
+                                      }
+                                    ],
+                                    "id": 57,
+                                    "name": "MemberAccess",
+                                    "src": "491:19:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "value",
+                                      "referencedDeclaration": null,
+                                      "type": "uint256"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 127,
+                                          "type": "msg",
+                                          "value": "msg"
+                                        },
+                                        "id": 58,
+                                        "name": "Identifier",
+                                        "src": "511:3:0"
+                                      }
+                                    ],
+                                    "id": 59,
+                                    "name": "MemberAccess",
+                                    "src": "511:9:0"
+                                  }
+                                ],
+                                "id": 60,
+                                "name": "FunctionCall",
+                                "src": "491:30:0"
+                              }
+                            ],
+                            "id": 61,
+                            "name": "ExpressionStatement",
+                            "src": "491:30:0"
+                          }
+                        ],
+                        "id": 62,
+                        "name": "Block",
+                        "src": "487:38:0"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "=",
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 7,
+                                      "type": "address",
+                                      "value": "buyer"
+                                    },
+                                    "id": 63,
+                                    "name": "Identifier",
+                                    "src": "535:5:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "sender",
+                                      "referencedDeclaration": null,
+                                      "type": "address"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 127,
+                                          "type": "msg",
+                                          "value": "msg"
+                                        },
+                                        "id": 64,
+                                        "name": "Identifier",
+                                        "src": "543:3:0"
+                                      }
+                                    ],
+                                    "id": 65,
+                                    "name": "MemberAccess",
+                                    "src": "543:10:0"
+                                  }
+                                ],
+                                "id": 66,
+                                "name": "Assignment",
+                                "src": "535:18:0"
+                              }
+                            ],
+                            "id": 67,
+                            "name": "ExpressionStatement",
+                            "src": "535:18:0"
+                          },
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "=",
+                                  "type": "enum Purchase.State"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 13,
+                                      "type": "enum Purchase.State",
+                                      "value": "state"
+                                    },
+                                    "id": 68,
+                                    "name": "Identifier",
+                                    "src": "564:5:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "member_name": "Locked",
+                                      "referencedDeclaration": null,
+                                      "type": "enum Purchase.State"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 11,
+                                          "type": "type(enum Purchase.State)",
+                                          "value": "State"
+                                        },
+                                        "id": 69,
+                                        "name": "Identifier",
+                                        "src": "572:5:0"
+                                      }
+                                    ],
+                                    "id": 70,
+                                    "name": "MemberAccess",
+                                    "src": "572:12:0"
+                                  }
+                                ],
+                                "id": 71,
+                                "name": "Assignment",
+                                "src": "564:20:0"
+                              }
+                            ],
+                            "id": 72,
+                            "name": "ExpressionStatement",
+                            "src": "564:20:0"
+                          }
+                        ],
+                        "id": 73,
+                        "name": "Block",
+                        "src": "531:57:0"
+                      }
+                    ],
+                    "id": 74,
+                    "name": "IfStatement",
+                    "src": "433:155:0"
+                  }
+                ],
+                "id": 75,
+                "name": "Block",
+                "src": "430:164:0"
+              }
+            ],
+            "id": 76,
+            "name": "FunctionDefinition",
+            "src": "384:210:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "confirmReceived",
+              "payable": false,
+              "scope": 115,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 77,
+                "name": "ParameterList",
+                "src": "629:2:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 78,
+                "name": "ParameterList",
+                "src": "643:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "enum Purchase.State"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 13,
+                              "type": "enum Purchase.State",
+                              "value": "state"
+                            },
+                            "id": 79,
+                            "name": "Identifier",
+                            "src": "646:5:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "member_name": "Inactive",
+                              "referencedDeclaration": null,
+                              "type": "enum Purchase.State"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 11,
+                                  "type": "type(enum Purchase.State)",
+                                  "value": "State"
+                                },
+                                "id": 80,
+                                "name": "Identifier",
+                                "src": "654:5:0"
+                              }
+                            ],
+                            "id": 81,
+                            "name": "MemberAccess",
+                            "src": "654:14:0"
+                          }
+                        ],
+                        "id": 82,
+                        "name": "Assignment",
+                        "src": "646:22:0"
+                      }
+                    ],
+                    "id": 83,
+                    "name": "ExpressionStatement",
+                    "src": "646:22:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "transfer",
+                              "referencedDeclaration": null,
+                              "type": "function (uint256)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 5,
+                                  "type": "address",
+                                  "value": "seller"
+                                },
+                                "id": 84,
+                                "name": "Identifier",
+                                "src": "678:6:0"
+                              }
+                            ],
+                            "id": 86,
+                            "name": "MemberAccess",
+                            "src": "678:15:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "balance",
+                              "referencedDeclaration": null,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 138,
+                                  "type": "contract Purchase",
+                                  "value": "this"
+                                },
+                                "id": 87,
+                                "name": "Identifier",
+                                "src": "694:4:0"
+                              }
+                            ],
+                            "id": 88,
+                            "name": "MemberAccess",
+                            "src": "694:12:0"
+                          }
+                        ],
+                        "id": 89,
+                        "name": "FunctionCall",
+                        "src": "678:29:0"
+                      }
+                    ],
+                    "id": 90,
+                    "name": "ExpressionStatement",
+                    "src": "678:29:0"
+                  }
+                ],
+                "id": 91,
+                "name": "Block",
+                "src": "643:71:0"
+              }
+            ],
+            "id": 92,
+            "name": "FunctionDefinition",
+            "src": "605:109:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "refund",
+              "payable": false,
+              "scope": 115,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 93,
+                "name": "ParameterList",
+                "src": "735:2:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 94,
+                "name": "ParameterList",
+                "src": "749:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "falseBody": null
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "==",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 127,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 95,
+                                "name": "Identifier",
+                                "src": "755:3:0"
+                              }
+                            ],
+                            "id": 96,
+                            "name": "MemberAccess",
+                            "src": "755:10:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 5,
+                              "type": "address",
+                              "value": "seller"
+                            },
+                            "id": 97,
+                            "name": "Identifier",
+                            "src": "769:6:0"
+                          }
+                        ],
+                        "id": 98,
+                        "name": "BinaryOperation",
+                        "src": "755:20:0"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "commonType": {
+                                    "typeIdentifier": "t_enum$_State_$11",
+                                    "typeString": "enum Purchase.State"
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "==",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 13,
+                                      "type": "enum Purchase.State",
+                                      "value": "state"
+                                    },
+                                    "id": 99,
+                                    "name": "Identifier",
+                                    "src": "782:5:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "member_name": "Created",
+                                      "referencedDeclaration": null,
+                                      "type": "enum Purchase.State"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 11,
+                                          "type": "type(enum Purchase.State)",
+                                          "value": "State"
+                                        },
+                                        "id": 100,
+                                        "name": "Identifier",
+                                        "src": "789:5:0"
+                                      }
+                                    ],
+                                    "id": 101,
+                                    "name": "MemberAccess",
+                                    "src": "789:13:0"
+                                  }
+                                ],
+                                "id": 102,
+                                "name": "BinaryOperation",
+                                "src": "782:20:0"
+                              }
+                            ],
+                            "id": 103,
+                            "name": "ExpressionStatement",
+                            "src": "782:20:0"
+                          },
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "tuple()",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_uint256",
+                                          "typeString": "uint256"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "transfer",
+                                      "referencedDeclaration": null,
+                                      "type": "function (uint256)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 7,
+                                          "type": "address",
+                                          "value": "buyer"
+                                        },
+                                        "id": 104,
+                                        "name": "Identifier",
+                                        "src": "806:5:0"
+                                      }
+                                    ],
+                                    "id": 106,
+                                    "name": "MemberAccess",
+                                    "src": "806:14:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "balance",
+                                      "referencedDeclaration": null,
+                                      "type": "uint256"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 138,
+                                          "type": "contract Purchase",
+                                          "value": "this"
+                                        },
+                                        "id": 107,
+                                        "name": "Identifier",
+                                        "src": "821:4:0"
+                                      }
+                                    ],
+                                    "id": 108,
+                                    "name": "MemberAccess",
+                                    "src": "821:12:0"
+                                  }
+                                ],
+                                "id": 109,
+                                "name": "FunctionCall",
+                                "src": "806:28:0"
+                              }
+                            ],
+                            "id": 110,
+                            "name": "ExpressionStatement",
+                            "src": "806:28:0"
+                          }
+                        ],
+                        "id": 111,
+                        "name": "Block",
+                        "src": "778:60:0"
+                      }
+                    ],
+                    "id": 112,
+                    "name": "IfStatement",
+                    "src": "752:86:0"
+                  }
+                ],
+                "id": 113,
+                "name": "Block",
+                "src": "749:96:0"
+              }
+            ],
+            "id": 114,
+            "name": "FunctionDefinition",
+            "src": "720:125:0"
+          }
+        ],
+        "id": 115,
+        "name": "ContractDefinition",
+        "src": "25:822:0"
+      }
+    ],
+    "id": 116,
+    "name": "SourceUnit",
+    "src": "0:848:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x9fbda871d559710256a2502a2517b794b482db40"
+    }
+  },
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-03-18T00:01:38.603Z"
+}
