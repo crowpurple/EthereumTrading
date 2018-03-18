@@ -1,0 +1,91 @@
+#ifndef CLICK_NFV_FIREWALL_TABLE_HH
+#define CLICK_NFV_FIREWALL_TABLE_HH
+
+#include <click/element.hh>
+#include <click/timer.hh>
+#include <stdint.h>
+#include <clicknet/tcp.h>
+CLICK_DECLS
+
+
+class firewallstate : public Element {
+public:
+    firewallstate();
+    ~firewallstate();
+
+    const char* class_name() const      { return "firewallstate"; }
+    const char* port_count() const      { return PORTS_0_0; }
+
+    int initialize(ErrorHandler *errh);
+    int fs_flush_timers();
+    int fs_add_entry(Packet*, struct entry*, struct entry*);
+    int fs_delete_entry(struct state_entry*);
+    struct state_entry *fs_check_entry(Packet*) const;
+    int fs_update_state(Packet*, struct state_entry*);
+    inline uint8_t fs_get_flag_by_packet(Packet* p) const;
+    int fs_clear_states();
+    void fs_print_state(const struct state_entry*, Packet*, uint8_t) const;
+    uint32_t fs_get_deleted_state_count() const { return _deleted_state_count; }
+    int fs_add_state_to_delete(struct entry*); 
+    int fs_attach_state(struct entry*, struct state_entry*);
+    int fs_suspend_state(struct state_entry*);
+    int fs_attach_suspend_states(struct entry*);
+    struct state_entry* fs_pop_from_deleted_state();
+    int fs_update_state_by_tag(Packet*);
+
+private:
+
+    class firewalltable* _fwt;
+};
+
+
+class firewalltable : public Element {
+
+public:
+    firewalltable();
+    ~firewalltable();
+
+    const char *class_name() const      { return "firewalltable"; }
+    const char *port_count() const      { return PORTS_0_0; }
+
+    int initialize(ErrorHandler*);
+    void ft_flush_timers();
+    void ft_flush_state_timers();
+    void ft_print_debug();
+    void ft_clear_debug();
+
+    bool ft_append_entry(struct entry*);
+    bool ft_replace_entry(struct entry*, int index);
+    bool ft_insert_entry(struct entry*, int index);
+    bool ft_delete_entry(struct entry*);
+    bool ft_check_entry(struct entry*);
+    enum action ft_match_entry(struct entry*); 
+    enum action ft_match_entry(struct entry*, Packet*);
+    int ft_clear();
+    int ft_clear_rules();
+    void ft_print();
+    struct ipchain* ft_get_ipt() {return ipt;}
+    int ft_get_size() const { return ipt->size; }
+    class firewallstate* get_firewall_states() const { return fws; }
+    void set_firewall_states(class firewallstate* new_fws) { fws = new_fws; }
+
+    int ft_add_to_delete(struct entry* victim);
+    int ft_update_state_by_tag(Packet*);
+    int ft_update_rule_by_tag(Packet*);
+    int ft_add_to_append(struct entry*);
+    struct entry* ft_return_entry(const struct entry*e, uint8_t);
+    uint32_t ft_get_delete_size();
+    struct entry* ft_pop_from_delete();
+    struct state_entry* ft_pop_from_deleted_state();
+    int ft_attach_state(struct entry*, struct state_entry*);
+    int ft_suspend_state(struct state_entry*);
+    struct entry* ft_find_appended_entry_by_seq(uint16_t);
+    int ft_add_state_to_delete(struct entry*);
+    uint32_t ft_get_deleted_state_count() const { return fws->fs_get_deleted_state_count(); }
+    int ft_enforce_append();
+
+private:
+    class firewallstate* fws;
+};
+CLICK_ENDDECLS
+

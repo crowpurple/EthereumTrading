@@ -1,0 +1,44 @@
+#ifndef CLICK_NFV_FIREWALL_HH
+#define CLICK_NFV_FIREWALL_HH
+#include <click/element.hh>
+#include "ipchain.hh"
+
+CLICK_DECLS
+
+struct iptable {
+    struct chain* chain_head;
+};
+
+
+/**
+ *  This is the class of firewall.
+ *  This class take resposibility for filtering the packets that
+ *  are passed to it.
+ *
+ * */
+class Firewall : public Element { 
+
+public:
+    Firewall();
+    ~Firewall(); 
+
+    const char *class_name() const		{ return "Firewall"; }
+    const char *port_count() const		{ return PORTS_1_1X2; }
+    // 'push' action will automatically call simple_action.
+    // Packet *simple_action(Packet *);
+    void push(int, Packet*);
+
+    enum action domatch(Packet*);
+
+    bool appRule(struct iptable*, struct entry); 
+    void iptablePrint(struct iptable*) const;
+    void printEntry(struct entry*) const; 
+
+
+private:
+    struct iptable* INPUT_TABLE;
+
+};
+
+CLICK_ENDDECLS
+#endif

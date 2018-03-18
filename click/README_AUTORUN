@@ -1,0 +1,48 @@
+2015-05-07 Hongda.
+===================================================================================
+Requirements.
+
+1) update your git reposity to the latest version.
+2) cp test.tar to a temporary directory.
+3) untar the test.tar and you will see 'loopsender' --> This may be used at step 13)
+
+===================================================================================
+Setps to enable multi-interfaces and run clickos.
+
+1) shutdown and boot system from xen-4.4.1
+2) change to root
+3) cd /home/setbrs/ 
+4) ./setxenbr0.sh
+5) ./setxenbr1.sh
+
+7) start a new terminal (let's call it T2)
+8) change to root
+9) cd /home/clickos/ 
+10) ./runfirewall00.sh 
+
+11) start a new terminal (T3)
+12) cd /home/test/ 
+13) ./loopsender 0 1   ---> send packets via xenbr0, which is the normal traffic.
+14) ./loopsender 1 1   ---> send message via xenbr1, which is maitenance messages.
+
+15) go to T2, then you should see the response. Those echo messages are caused by 
+    maintenance messages. (sent via xenbr1)
+
+16) before running ./runfirewall00.sh again, you must shutdown. 
+    Use 'xl shutdown click0' to do that. 
+
+======================================================================================
+If you want the normal traffic to go through your own elements, just modified: 
+    
+    /home/clickos/minios/firewall00.click 
+
+Replace the 'ipfilter' element to your element. Pay attention to the arguments.
+======================================================================================
+
+
+
+
+
+
+
+

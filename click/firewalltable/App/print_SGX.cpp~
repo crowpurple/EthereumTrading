@@ -1,0 +1,52 @@
+
+#include <click/config.h>
+#include "firewalltable.hh"
+#include <click/glue.hh>
+#include <click/args.hh>
+#include <click/error.hh>
+#include <click/straccum.hh>
+#include <click/etheraddress.hh>
+#ifdef CLICK_USERLEVEL
+#include <math.h>
+#endif
+#include<stdio.h>
+#include<time.h>
+#include "sgx_urts.h"
+#include "Enclave_u.h"
+#define ENCLAVE_FILE "enclave.signed.so"
+#define MAX_BUF_LEN 100
+
+CLICK_DECLS
+
+sgx_enclave_id_t eid;
+sgx_status_t ret=SGX_SUCCESS;
+sgx_launch_token_t token ={25};
+int updated = 0;
+
+Packet *
+print_SGX::simple_action(Packet *p)
+{
+	
+	int num = 1;
+	ret = sgx_create_enclave(ENCLAVE_FILE,1,&token,&updated,&eid,NULL);
+	if(ret!=SGX_SUCCESS)
+	{
+		printf("App:error %#x,failed to create enclave.\n",ret);
+                return p;
+	}
+
+	int enclave_ret = 0;
+        foo(eid,&enclave_ret,num,ts1);
+
+	if(SGX_SUCCESS != sgx_destroy_enclave(eid))
+		printf("SGX_error!\n");
+	printf("SGX_Success!\n");
+
+  return p;
+}
+
+CLICK_ENDDECLS
+EXPORT_ELEMENT(print_SGX)
+ELEMENT_REQUIRES(userlevel)
+
+

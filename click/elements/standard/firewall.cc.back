@@ -1,0 +1,344 @@
+#include <click/config.h>
+#include "firewall.hh"
+
+#if 0
+#include <click/glue.hh>
+#include <click/args.hh>
+#include <click/error.hh>
+#include <click/straccum.hh>
+#endif
+
+CLICK_DECLS
+
+/*******************************************************************/
+int getChainSize(struct chain* c){
+	return c->size;
+}
+
+struct entry* allocEntry(){
+	entry *e = new entry();
+	return e;
+}
+
+struct chain* allocChain(){
+	chain *c = new chain();
+	struct entry* en = allocEntry();
+	en->next = NULL;
+	c->head = en;
+	c->size = 0;
+	return c;
+}
+
+struct entry* getEntryByIndex(struct chain* c, int index){
+	struct entry *cur = c->head->next;
+
+	while(cur) {
+		if (index == 0)
+			return cur;
+		else{
+			cur = cur->next;
+			index--;
+		}
+	}
+
+	return NULL;
+}
+
+bool addEntryAtTail(struct chain* c, struct entry* e){
+    if (!(c && e))
+		return false;
+
+	e->next = NULL;
+
+	entry *cur = c->head;
+	while(cur){
+		if(cur->next == NULL){
+			cur->next = e;
+			c->size++;
+			return true;
+		}
+
+		cur = cur->next;
+	}
+    /* Fix me */
+    return false;
+}
+
+void printEntry(struct entry* e) {
+
+    printf("srcip: %u\n", e->src_ip);
+#if 0
+	std::cout << "-------------------------------------------------------"  << std::endl;
+	std::cout << " source ip : "<< e->src_ip << std::endl;
+	std::cout << " destination ip : "<< e->des_ip << std::endl;
+	std::cout << " protocol : "<< int(e->protocol) << std::endl;
+	std::cout << " srouce port : "<< e->src_port << std::endl;
+	std::cout << " destination port : "<< e->des_port << std::endl;
+	std::cout << " action : "<< int(e->action) << std::endl;
+	std::cout << "-------------------------------------------------------"  << std::endl;
+#endif
+}
+
+void printChain(struct chain* c) {
+	struct entry* en = c->head->next;
+	while(en) {
+		printEntry(en);
+		en = en->next;
+	}
+	//std::cout << std::endl;
+}
+
+
+struct entry* nextEntry(struct chain* c, struct entry* e){
+	return e->next;
+}
+
+/*
+struct entry* preEntry(struct chain* c, struct entry* e){
+	std::list<struct entry *> rules = c->rules;
+	std::list<struct entry *>::iterator findIter = ;
+	if (findIter > rules.begin() && findIter < rules.end());
+		return *(findIter - 1)
+	else
+		return NULL;
+
+}*/
+
+bool isEntryEqual(struct chain* c, struct entry* e1, struct entry* e2){
+	if (e1->src_ip == e2->src_ip &&
+		e1->des_ip == e2->des_ip && 
+		e1->protocol == e2->protocol &&
+		e1->src_port == e2->src_port &&
+		e1->des_port == e2->des_port &&
+		e1->action == e2->action)
+		return true;
+	else
+		return false;
+}
+
+
+bool isEntryMatch(struct chain* c, struct entry* e1, struct entry* e2){
+	if (e1->src_ip == e2->src_ip &&
+		e1->des_ip == e2->des_ip && 
+		e1->protocol == e2->protocol &&
+		e1->src_port == e2->src_port &&
+		e1->des_port == e2->des_port)
+		return true;
+	else
+		return false;
+}
+/************************************************************************/
+
+Firewall::Firewall():
+    INPUT_TABLE(new struct iptable)
+{
+    INPUT_TABLE->chain_head = allocChain();
+}
+
+Firewall::~Firewall()
+{  }
+
+
+void Firewall::printEntry(struct entry* e) const 
+{
+    printf("srcip: %u\n", e->src_ip);
+#if 0    
+    std::cout << "action: " << e->action << "  "; 
+    std::cout << "src_ip: " << IPAddress(e->src_ip).s() << "  ";
+    std::cout << "dst_ip: " << IPAddress(e->des_ip).s() << "  ";
+    std::cout << "protoc: " << e->protocol << "  ";
+    std::cout << "src_port" << e->src_port << "  ";
+    std::cout << "dst_port" << e->des_port << std::endl;
+#endif
+}
+
+
+enum action 
+Firewall::domatch(Packet* p)
+{
+    enum action ret = DROP;    
+    const uint8_t *pdata; 
+    const struct click_ip *iph = p->ip_header();
+    //int ip_len = ntohs(iph->ip_len);
+    //int payload_len = ip_len - (iph->ip_hl << 2);
+    struct entry te;   
+    
+    /* First, make an entry from the packet. */
+    te.action = DROP;      // This is not used.
+    te.src_ip = (uint32_t)(iph->ip_src.s_addr);
+    te.des_ip = (uint32_t)(iph->ip_dst.s_addr);
+    te.protocol = (uint8_t)(iph->ip_p);
+    switch ( te.protocol ) {
+        default: {
+            printf("WARNING: Unknow protocol for IP packet!");
+            /* Fall through */
+        }
+        /* ICMP */
+        case 1: {
+            te.src_port = 0;
+            te.des_port = 0;
+            break;
+        }
+        /* TCP */
+        case 6: {
+            pdata = (uint8_t*)(iph + (iph->ip_hl << 2)); 
+            te.src_port = ntohs(*(uint16_t*)pdata);
+            te.des_port = ntohs(*(uint16_t*)(pdata+2));
+            break;
+        }
+    }
+    /* Then, compare this entry to each of the rule. */
+    struct entry* ep = getEntryByIndex(INPUT_TABLE->chain_head, 0);
+    while ( NULL != ep ) {
+        // If a matched rule was found, then return the action.
+        if ( isEntryMatch(INPUT_TABLE->chain_head, &te, ep) ) {
+            return ep->action; 
+        }
+        ep = nextEntry(INPUT_TABLE->chain_head, ep);
+    }
+
+    // If there is no matched, then return DROP.
+    return ret;
+}
+
+
+void
+Firewall::push(int port, Packet *p)
+{
+    // Get paket data.
+    uint8_t *pdata; 
+    // caller must guarantee packet is an IP packet.
+    // See clicknet/ip.h for struct "click_ip"
+    const click_ip *iph = p->ip_header();
+    int ip_len = ntohs(iph->ip_len);
+    int payload_len = ip_len - (iph->ip_hl << 2);
+    struct entry e;
+    
+    // see: http://en.wikipedia.org/wiki/List_of_IP_protocol_numbers
+    // look the protocol number to see if this packet is a info packet.
+    if ( iph->ip_p == 0x0fd && payload_len > 0) 
+    {
+        if ( NULL == 
+            (pdata = (uint8_t *)malloc(sizeof(*pdata) * payload_len)) )
+        {
+            fprintf(stderr, "Memory fail: print info packets!\n");
+            p->kill();
+            return;
+        }
+        memcpy(pdata, (const uint8_t*)iph + (iph->ip_hl << 2), payload_len);
+        /*********************************************************************
+         *  look at the code of the conent. 0-commands, 1-debug. 
+         *********************************************************************/
+        switch (pdata[0]) {
+            /* code = 0, it's a command */
+            case 0: {
+                switch ( pdata[1] ) {
+                    /* append */
+                    case 0: {
+                        // append rule;:w
+                        pdata += 2;
+                        payload_len -= 2;
+                        e.action = (enum action)pdata[0];
+                        // --- stored in network order. ---
+                        e.src_ip = (*(unsigned int*)(pdata+1));
+                        printf("%u");
+                        e.des_ip = (*(unsigned int*)(pdata+5));
+                        e.protocol = pdata[9];
+                        switch (e.protocol)
+                        {
+                            default:
+                                printf("WARNING: Unknow protocol!\n");
+                                /* Fall through */
+                            /* ICMP */
+                            case 1: {
+                                e.src_port = 0;
+                                e.des_port = 0;
+                                break;
+                            }
+                            /* TCP */
+                            case 6: {
+                                e.src_port = ntohs(*((unsigned short*)(pdata+10)));
+                                e.des_port = ntohs(*((unsigned short*)(pdata+12)));
+                                break;
+                            }
+                            /* UDP */
+                            case 17: {
+                                e.src_port = ntohs(*((unsigned short*)(pdata+10)));
+                                e.des_port = ntohs(*((unsigned short*)(pdata+12)));
+                                break;
+                            }
+                        }
+                        // call appRule to append a rule.
+                        if ( appRule((struct iptable*)INPUT_TABLE, e) == false )
+                        {
+                            printf("ERROR: Could not append a rule!\n");
+                            printf("==================================\n");
+                        }
+                        printEntry(&e);
+                        break;
+                    }
+                }
+                break;
+            }
+            case 1 : {
+                printf("Should print iptable contents here ... \n");
+                break;
+            }
+        }
+        // free the packet.
+        p->kill();
+        return ;
+    }
+    /*********************************************************************
+    *   Else, it's normal traffic. 
+    *********************************************************************/
+    enum action res;
+    if ( (res = domatch(p)) == ALLOW ) {
+        output(0).push(p);
+    } else if ( DROP == res ) {
+        output(1).push(p);
+    } else {
+        printf("Unknow action!\n");
+        p->kill();
+    }
+}
+
+
+bool Firewall::appRule(struct iptable* ipt, struct entry e)
+{
+    struct entry* ep;
+    ep = allocEntry();
+    if ( NULL != ep )
+    {
+        ep->src_ip = e.src_ip;
+        ep->des_ip = e.des_ip;
+        ep->protocol = e.protocol;
+        ep->src_port = e.src_port;
+        ep->des_port = e.des_port;
+        ep->action = e.action;
+        return addEntryAtTail(INPUT_TABLE->chain_head, ep);
+    }
+    else
+    {
+        printf("ERROR: Could not allocate entry");
+        return false;
+    }
+}
+
+void Firewall::iptablePrint(struct iptable* ipt) const
+{
+    struct entry* ep;
+    int chainLen = getChainSize(ipt->chain_head);
+    for ( int i = 0; i < chainLen; ++i )
+    {
+        if ( (ep = getEntryByIndex(INPUT_TABLE->chain_head, i)) != NULL )
+        {
+            printEntry(ep);
+            printf("-----------------------------------\n");
+        }
+    }
+}
+
+CLICK_ENDDECLS
+EXPORT_ELEMENT(Firewall)
+//ELEMENT_MT_SAFE(IPEcho)
